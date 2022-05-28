@@ -1,0 +1,10 @@
+{
+    "version": "0.6",
+    "license": "dev",
+    "author": "MaxenceDEV",
+    "name": "MaxenceDEVCMS",
+    "dir": "/home/mpo/",
+    "entreprise": "MPO-47",
+    "description": "Matériel Pro Occasion. Nous proposons du matériel professionnel neuf et d'occasion de divers commerces et entreprises: Présentoirs, gondoles, rayonnages divers.",
+    "dev": "false"
+}

@@ -1,0 +1,12 @@
+{
+    "name": "imagekit/sample",
+    "type": "project",
+    "require-dev": {
+        "imagekit/imagekit": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Imagekit\\Sample\\": "src/"
+        }
+    }
+}

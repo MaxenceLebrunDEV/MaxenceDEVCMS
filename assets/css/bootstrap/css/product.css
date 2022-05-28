@@ -1,0 +1,482 @@
+/* Beautiful shopping • UI (User Interface) made using CSS Grid • UX (User Experience) made using GreenSock's FLIP Details: -------------------------------- Click on any of the *Plant* to move it to the basket and if you didn't like the plant or you choose to select another plant click the plant that is inside the basket and it will be moved back to its original place — All will happen with beautiful and eye-catching animation. I set the basket UI limit to be able to hold four to five (depends on image size) plants, it can take more ...but then the basket UI would look broken, the plants are going to move outside the basket — Just clarifying, *It is on purpose*. I've used the word *click* but that doesn't mean you can't touch/tap the plant, if you're using touch screen devices, it gonna work fine, and yup, it's responsive! */
+html {
+  font-size: 62.5%;
+}
+body {
+  --hovered-color: #4d4d4d;
+  --hovered-background: #ebebeb;
+  padding: 2rem 4rem;
+  margin: 0;
+  color: #050505;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+}
+@media (max-width: 425px) {
+  body {
+    padding: 1rem;
+ }
+}
+a, a:link {
+  color: #000;
+  text-decoration: none;
+  transition: 0.1s linear;
+}
+a:hover {
+  color: var(--hovered-color);
+}
+a:focus {
+  outline: none;
+}
+input:focus, button:focus {
+  outline: none;
+}
+.page {
+  display: grid;
+  grid-template-areas: "header header" "sidebar main" "footer footer";
+  grid-template-rows: 8rem 1fr;
+  grid-template-columns: 24rem 1fr;
+}
+@media (max-width: 425px) {
+  .page {
+    grid-template-areas: "header header" "main main" "footer footer";
+ }
+}
+@media (max-width: 375px) {
+  .page {
+    grid-template-rows: 6rem 1fr;
+ }
+}
+.header {
+  grid-area: header;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+}
+@media (max-width: 375px) {
+  .header {
+    gap: 0.9rem;
+ }
+}
+.header__logo-container {
+  width: 24rem;
+}
+@media (max-width: 1024px) {
+  .header__logo-container {
+    width: auto;
+ }
+}
+@media (max-width: 768px) {
+  .header__logo-container {
+    flex: 1;
+ }
+}
+.header__logo {
+  display: inline-block;
+  background-image: url("../../../img/favicon.png") no-repeat center center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 3rem;
+}
+.header__links {
+  flex-grow: 1;
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .header__links {
+    display: none;
+ }
+}
+.header__link {
+  padding: 1.8rem 1rem;
+  box-sizing: border-box;
+  font-size: 1.7rem;
+  border-bottom: 2px solid transparent;
+}
+.header__link:hover {
+  border-bottom-color: var(--hovered-color);
+}
+.header__search-container {
+  position: relative;
+}
+@media (max-width: 375px) {
+  .header__search-container {
+    width: 3.8rem;
+    height: 3.8rem;
+    border-radius: 3.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--hovered-background);
+ }
+}
+.header__search-container > svg {
+  position: absolute;
+  left: 1.2rem;
+  top: 48%;
+  transform: translateY(-50%);
+}
+@media (max-width: 375px) {
+  .header__search-container > svg {
+    position: initial;
+    transform: translate(-1px, -1px);
+ }
+}
+.header__search-container:hover .header__search, .header__search-container:focus-within .header__search {
+  background: var(--hovered-background);
+}
+.header__search {
+  width: 18.4rem;
+  height: 4.4rem;
+  border-radius: 100rem;
+  background: #f5f5f5;
+  border: 0;
+  box-sizing: border-box;
+  padding: 0.4rem 1.4rem 0.4rem 4.6rem;
+  font-size: 1.7rem;
+  transition: 0.1s linear;
+}
+.header__search::-webkit-input-placeholder {
+  color: #b3b3b3;
+}
+@media (max-width: 375px) {
+  .header__search {
+    display: none;
+ }
+}
+.header__user {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+.header__user > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.8rem;
+  height: 3.8rem;
+  border-radius: 3.8rem;
+}
+.header__user > a:hover {
+  background-color: var(--hovered-background);
+}
+.header__profile:link {
+  background: url("https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png");
+  background-size: cover;
+}
+.sidebar {
+  grid-area: sidebar;
+}
+@media (max-width: 425px) {
+  .sidebar {
+    display: none;
+ }
+}
+.sidebar__title {
+  font-size: 2.8rem;
+  font-weight: normal;
+  margin-top: 3.4rem;
+}
+.sidebar__category:not(:first-of-type) .sidebar__heading {
+  border-top: 1px solid #000 33;
+  margin: 4rem 0 1.6rem;
+}
+.sidebar__heading {
+  font-size: 1.6rem;
+  margin: 2rem 0 1.6rem;
+  padding-top: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: 0.1s linear;
+}
+.sidebar__heading:hover {
+  color: var(--hovered-color);
+}
+.sidebar__heading > svg {
+  height: 2.2rem;
+}
+.sidebar__options {
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+.check {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+  cursor: pointer;
+  transition: 0.1s linear;
+}
+.check:hover {
+  color: var(--hovered-color);
+}
+.check__input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.check__input:checked + .check__checkbox {
+  background: #000;
+}
+.check__checkbox {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid #000 66;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.check__checkbox > svg {
+  height: 2rem;
+}
+.check__text {
+  font-size: 1.6rem;
+  margin: 0;
+  margin-left: 0.8rem;
+  user-select: none;
+}
+.color {
+  display: inline-block;
+  width: 3.4rem;
+  height: 3.4rem;
+  margin: 0.5rem;
+  border-radius: 3.4rem;
+  background: #d65c5c;
+  cursor: pointer;
+}
+.main {
+  grid-area: main;
+  padding: 4rem;
+  padding-right: 0;
+  box-sizing: border-box;
+  text-align: -webkit-center;
+}
+@media (max-width: 425px) {
+  .main {
+    padding-left: 0;
+ }
+}
+.main__title {
+  font-size: 3rem;
+  margin: 1rem 0.4rem 0.8rem;
+  text-align: left;
+  display: none;
+}
+@media (max-width: 425px) {
+  .main__title {
+    display: block;
+ }
+}
+.filters {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 4rem;
+}
+@media (max-width: 425px) {
+  .filters {
+    justify-content: flex-start;
+ }
+}
+.filters__btn {
+  background: transparent;
+  font-size: 1.7rem;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: 0.1s linear;
+}
+.filters__btn:hover, .filters__btn:hover > svg {
+  stroke: var(--hovered-color);
+  color: var(--hovered-color);
+}
+.filters__btn > svg {
+  height: 1.9rem;
+  margin-left: 0.4rem;
+  transition: 0.1s linear;
+}
+.filters__btn--sort {
+  margin-left: 1.6rem;
+}
+.show {
+  display: none;
+}
+@media (max-width: 425px) {
+  .show {
+    display: initial;
+ }
+}
+@media (max-width: 425px) {
+  .hide {
+    display: none;
+ }
+}
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+@media (max-width: 768px) {
+  .items {
+    justify-content: center;
+ }
+}
+.item {
+  flex: 1 0 30rem;
+  height: 38rem;
+}
+@media (max-width: 1024px) {
+  .item {
+    flex-grow: 0;
+ }
+}
+.item__position {
+  width: 100%;
+  height: 30rem;
+  position: relative;
+  background: #f7f7f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.item__image {
+  height: 80%;
+  cursor: pointer;
+}
+.item__detail {
+  font-size: 1.6rem;
+  padding-top: 0.8rem;
+  text-align: left;
+}
+.item__detail p {
+  margin: 0;
+}
+.pagination__page {
+  text-align: center;
+  font-size: 1.6rem;
+}
+.pagination__links {
+  margin: 2rem 0 3rem;
+  display: flex;
+  justify-content: space-between;
+}
+.pagination__link {
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+}
+.pagination__link > svg {
+  --s: 0.6rem;
+  height: 1em;
+  transition: 0.1s linear;
+}
+.pagination__link:hover > svg {
+  stroke: var(--hovered-color);
+}
+.basket {
+  position: sticky;
+  bottom: 0;
+  width: 30rem;
+  height: 6rem;
+  border-radius: 0.4rem 0.4rem 0 0;
+  background: #000;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.4rem 2rem;
+  box-sizing: border-box;
+}
+@media (max-width: 375px) {
+  .basket {
+    width: 100%;
+ }
+}
+.basket__list {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.basket__item {
+  height: 4rem;
+}
+.basket__item:not(:first-child) {
+  margin-left: 1.4rem;
+}
+.basket__btn {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 4rem;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.1s linear;
+}
+.basket__btn:hover {
+  background: #fff 33;
+}
+.footer {
+  grid-area: footer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 0 2rem;
+  border-top: 1px solid #000 4d;
+}
+.footer a:not(a:link) {
+  border-bottom: 1px solid #000 66;
+  padding-bottom: 0.4rem;
+  transition: 0.1s linear;
+}
+.footer a:not(a:link):hover {
+  border-bottom-color: #000 4d;
+}
+.footer__made-by {
+  font-size: 1.6rem;
+  margin: 0.8rem 0 1.4rem;
+}
+.footer__made-by > svg {
+  fill: #5ab7e3;
+  height: 1.4em;
+  transform: translateY(4px);
+}
+.footer__made-by > a {
+  font-weight: bold;
+}
+.footer__social {
+  display: flex;
+  gap: 0.6rem;
+}
+.footer__link {
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4rem;
+}
+.footer__link:hover {
+  background: #e6e6e6;
+}
+.footer__link > svg {
+  height: 2rem;
+}
+.footer__credits {
+  margin-top: 3rem;
+  font-size: 1.4rem;
+  text-align: center;
+}

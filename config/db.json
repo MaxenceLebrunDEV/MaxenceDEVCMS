@@ -1,0 +1,7 @@
+{
+    "type": "mysql",
+    "hostname": "localhost",
+    "user": "mpo47",
+    "password": "AXEL2007",
+    "dbname": "pdo-mpo"
+}
